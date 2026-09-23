@@ -1,0 +1,19 @@
+<main class="app-shell">
+  <nav class="topbar" aria-label="Main navigation" *ngIf="!isLoginPage">
+    <a class="brand" routerLink="/home" aria-label="MyApp home">
+      <span class="brand-mark">M</span>
+      <span>MyApp</span>
+    </a>
+    <div class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/about" routerLinkActive="active">About us</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact us</a>
+      <a class="auth-link" routerLink="/signup" routerLinkActive="active">Sign up</a>
+      <a class="auth-link filled" routerLink="/registration" routerLinkActive="active">Register</a>
+    </div>
+    <button class="avatar btn p-0" type="button" aria-label="Open profile menu">AR</button>
+  </nav>
+
+  <router-outlet></router-outlet>
+</main>

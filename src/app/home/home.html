@@ -1,0 +1,48 @@
+<section class="home-page page-container">
+	<div class="hero-copy">
+		<p class="eyebrow">Welcome to MyApp</p>
+		<h1>Make good work<br><span>feel effortless.</span></h1>
+		<p class="intro">A calm, focused workspace for teams who care about doing meaningful work and doing it well.</p>
+		<div class="hero-actions">
+			<a class="primary-action" routerLink="/services">Explore services <span aria-hidden="true">&#8594;</span></a>
+			<a class="text-action" routerLink="/about">Meet our team <span aria-hidden="true">&#8594;</span></a>
+		</div>
+	</div>
+	<div class="home-art" aria-label="Decorative abstract composition">
+		<div class="art-sun"></div>
+		<div class="art-card"><span>01</span><strong>Ideas<br>into action</strong></div>
+		<div class="art-line"></div>
+	</div>
+</section>
+<section class="food-carousel page-container" aria-labelledby="featured-title">
+	<div class="carousel-heading">
+		<div>
+			<p class="eyebrow">Freshly featured</p>
+			<h2 id="featured-title">Find your next favourite.</h2>
+		</div>
+		<div class="carousel-controls">
+			<button class="carousel-control" type="button" (click)="previousSlide()" aria-label="Previous featured dish">&#8592;</button>
+			<button class="carousel-control" type="button" (click)="nextSlide()" aria-label="Next featured dish">&#8594;</button>
+		</div>
+	</div>
+	<div class="carousel-window">
+		<div class="carousel-track" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+			<article class="food-slide" *ngFor="let slide of slides">
+				<img [src]="slide.image" [alt]="slide.alt">
+				<div class="slide-overlay">
+					<span>{{ slide.category }}</span>
+					<h3>{{ slide.title }}</h3>
+					<p>{{ slide.description }}</p>
+				</div>
+			</article>
+		</div>
+	</div>
+	<div class="carousel-indicators" role="tablist" aria-label="Featured dishes">
+		<button *ngFor="let slide of slides; let index = index" class="indicator" [class.active]="index === currentSlide" type="button" (click)="goToSlide(index)" [attr.aria-label]="'Show ' + slide.title" [attr.aria-selected]="index === currentSlide"></button>
+	</div>
+</section>
+<section class="home-stats page-container" aria-label="Company highlights">
+	<div><strong>12+</strong><span>years of experience</span></div>
+	<div><strong>240</strong><span>projects shipped</span></div>
+	<div><strong>98%</strong><span>client satisfaction</span></div>
+</section>

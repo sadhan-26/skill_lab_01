@@ -1,0 +1,31 @@
+<section class="login-page">
+  <div class="login-art" aria-hidden="true">
+    <div class="art-ring ring-one"></div>
+    <div class="art-ring ring-two"></div>
+    <div class="art-orb"></div>
+    <p>Make room<br><span>for better work.</span></p>
+  </div>
+
+  <div class="login-panel">
+    <p class="eyebrow">Welcome back</p>
+    <h1>Sign in to<br><span>MyApp.</span></h1>
+    <p class="login-intro">Enter your details to continue to your workspace.</p>
+
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+      <label for="login-email">Email address</label>
+      <input id="login-email" type="email" placeholder="demo@myapp.com" formControlName="email" [class.invalid]="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+      <small class="field-error" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.hasError('required')">Email is required.</small>
+      <small class="field-error" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.hasError('email')">Enter a valid email address.</small>
+
+      <label for="login-password">Password</label>
+      <input id="login-password" type="password" placeholder="password123" formControlName="password" [class.invalid]="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+      <small class="field-error" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.hasError('required')">Password is required.</small>
+
+      <button class="login-submit" type="submit">Continue <span aria-hidden="true">&#8594;</span></button>
+      <p class="login-hint">Demo: <strong>demo@myapp.com</strong> / <strong>password123</strong></p>
+      <p class="form-error" *ngIf="loginError">{{ loginError }}</p>
+    </form>
+
+    <p class="signup-prompt">New here? <a routerLink="/signup">Create an account</a></p>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<section class="auth-page">
+  <div class="auth-copy">
+    <p class="eyebrow">Join MyApp</p>
+    <h1>Start making<br><span>good things.</span></h1>
+    <p>Create your account and bring your best work into one calm, focused space.</p>
+    <p class="auth-notice" *ngIf="signupNotice">{{ signupNotice }}</p>
+  </div>
+  <form class="auth-form" [formGroup]="signupForm" (ngSubmit)="submit()" novalidate>
+    <label for="signup-name">Full name</label>
+    <input id="signup-name" type="text" placeholder="Alex Morgan" formControlName="fullName" [class.invalid]="signupForm.controls.fullName.touched && signupForm.controls.fullName.invalid">
+    <small class="field-error" *ngIf="signupForm.controls.fullName.touched && signupForm.controls.fullName.hasError('required')">Full name is required.</small>
+    <small class="field-error" *ngIf="signupForm.controls.fullName.touched && signupForm.controls.fullName.hasError('minlength')">Enter at least 2 characters.</small>
+    <label for="signup-email">Email address</label>
+    <input id="signup-email" type="email" placeholder="alex@example.com" formControlName="email" [class.invalid]="signupForm.controls.email.touched && signupForm.controls.email.invalid">
+    <small class="field-error" *ngIf="signupForm.controls.email.touched && signupForm.controls.email.hasError('required')">Email is required.</small>
+    <small class="field-error" *ngIf="signupForm.controls.email.touched && signupForm.controls.email.hasError('email')">Enter a valid email address.</small>
+    <label for="signup-password">Password</label>
+    <input id="signup-password" type="password" placeholder="Create a password" formControlName="password" [class.invalid]="signupForm.controls.password.touched && signupForm.controls.password.invalid">
+    <small class="field-error" *ngIf="signupForm.controls.password.touched && signupForm.controls.password.hasError('required')">Password is required.</small>
+    <small class="field-error" *ngIf="signupForm.controls.password.touched && signupForm.controls.password.hasError('minlength')">Use at least 8 characters.</small>
+    <button class="auth-submit" type="submit">Create account <span aria-hidden="true">&#8594;</span></button>
+    <p class="form-success" *ngIf="submitted && signupForm.valid">Your account is ready to create.</p>
+  </form>
+</section>
